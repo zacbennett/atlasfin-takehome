@@ -1,0 +1,16 @@
+- create api helper class return static data!
+- using react router, create the home page, and the indicidual article page !
+- creat the home page that calls the api and pulls in the static data!
+- create the individual article page that shows the individual article!
+- clicking the article sends you to the right page! (25 minutes)
+- update teh api to return dynamic data (65 minutes)!
+- move env keys to a new file!
+- add data
+- styling! (80 minues)
+
+- clean up!
+- move types to the same file!
+- handle 404 on document!
+IF EXTRA TIME
+- testing
+- deployment
