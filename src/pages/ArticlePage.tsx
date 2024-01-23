@@ -11,25 +11,26 @@ export default function ArticlePage() {
   const [article, setArticle] = useState({} as Article);
   const [error, setError] = useState(false);
 
-  async function loadArticle() {
-    setLoading(true);
-    setError(false);
-    try {
-      const articleData = await API.getArticleById(id);
-      setArticle(articleData);
-    } catch (error) {
-      setError(true);
-      // TODO: More custom error handling here
-      // if (error instanceof ArticleNotFoundError) {
-      // }
-    } finally {
-      setLoading(false);
-    }
-  }
-
+  
   useEffect(() => {
+    async function loadArticle() {
+      setLoading(true);
+      setError(false);
+      try {
+        const articleData = await API.getArticleById(id);
+        setArticle(articleData);
+      } catch (error) {
+        setError(true);
+        // TODO: More custom error handling here
+        // if (error instanceof ArticleNotFoundError) {
+        // }
+      } finally {
+        setLoading(false);
+      }
+    }
+  
     loadArticle();
-  }, []);
+  }, [id]);
 
   function renderArticle() {
     if (error) {
@@ -39,7 +40,7 @@ export default function ArticlePage() {
     return (
       <div id="article">
         <h1>{article.headline}</h1>
-        {/* Setting alt attribute to empty string to make the linter happy, but ideally we should be utilizing this to make it accessible to users w/ screenreaders */}
+        {/* Setting alt attribute to empty string to make the linter happy, but ideally we should be utilizing this to make it accessible to users w/ screen readers */}
         <img src={article.imageUrl} alt="" />
         <p>{article.body}</p>
       </div>
